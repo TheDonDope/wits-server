@@ -7,7 +7,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/TheDonDope/wits/pkg/storage"
+	"github.com/TheDonDope/wits-server/pkg/storage"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/postgres"
 

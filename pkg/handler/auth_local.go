@@ -5,10 +5,10 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/TheDonDope/wits/pkg/auth"
-	"github.com/TheDonDope/wits/pkg/storage"
-	"github.com/TheDonDope/wits/pkg/types"
-	authview "github.com/TheDonDope/wits/pkg/view/auth"
+	"github.com/TheDonDope/wits-server/pkg/auth"
+	"github.com/TheDonDope/wits-server/pkg/storage"
+	"github.com/TheDonDope/wits-server/pkg/types"
+	authview "github.com/TheDonDope/wits-server/pkg/view/auth"
 	"github.com/google/uuid"
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo/v4"
@@ -131,7 +131,7 @@ func (l LocalRegistrator) Register(c echo.Context) error {
 		slog.Error("🚨 🏠 (pkg/handler/auth_local.go) ❓❓❓❓ 🔒 Signing refresh token failed with", "error", err)
 	}
 
-    // Register uuid.UUID with gob
+	// Register uuid.UUID with gob
 	gob.Register(uuid.UUID{})
 
 	store := sessions.NewCookieStore([]byte(os.Getenv("SESSION_SECRET")))

@@ -4,7 +4,7 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/TheDonDope/wits/pkg/types"
+	"github.com/TheDonDope/wits-server/pkg/types"
 	"github.com/google/uuid"
 )
 

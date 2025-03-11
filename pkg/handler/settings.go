@@ -3,7 +3,7 @@ package handler
 import (
 	"log/slog"
 
-	"github.com/TheDonDope/wits/pkg/view/settings" // Import the missing package
+	"github.com/TheDonDope/wits-server/pkg/view/settings"
 	"github.com/labstack/echo/v4"
 )
 

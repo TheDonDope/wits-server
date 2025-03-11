@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/TheDonDope/wits/pkg/types"
+	"github.com/TheDonDope/wits-server/pkg/types"
 	"golang.org/x/crypto/bcrypt"
 )
 

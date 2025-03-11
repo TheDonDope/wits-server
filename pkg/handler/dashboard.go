@@ -3,7 +3,7 @@ package handler
 import (
 	"log/slog"
 
-	"github.com/TheDonDope/wits/pkg/view/dashboard"
+	"github.com/TheDonDope/wits-server/pkg/view/dashboard"
 	"github.com/labstack/echo/v4"
 )
 

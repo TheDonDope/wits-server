@@ -4,7 +4,7 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/TheDonDope/wits/pkg/types"
+	"github.com/TheDonDope/wits-server/pkg/types"
 )
 
 // AuthenticatedUser returns the authenticated user from the context.

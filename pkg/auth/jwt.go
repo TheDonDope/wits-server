@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/TheDonDope/wits/pkg/types"
+	"github.com/TheDonDope/wits-server/pkg/types"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/gorilla/sessions"
 	echojwt "github.com/labstack/echo-jwt/v4"

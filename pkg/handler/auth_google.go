@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/TheDonDope/wits/pkg/storage"
+	"github.com/TheDonDope/wits-server/pkg/storage"
 	"github.com/labstack/echo/v4"
 	"github.com/nedpals/supabase-go"
 )

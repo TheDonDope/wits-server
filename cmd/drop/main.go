@@ -8,7 +8,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/TheDonDope/wits/pkg/storage"
+	"github.com/TheDonDope/wits-server/pkg/storage"
 
 	"github.com/joho/godotenv"
 

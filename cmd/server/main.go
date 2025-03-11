@@ -8,9 +8,9 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/TheDonDope/wits/pkg/auth"
-	"github.com/TheDonDope/wits/pkg/handler"
-	"github.com/TheDonDope/wits/pkg/storage"
+	"github.com/TheDonDope/wits-server/pkg/auth"
+	"github.com/TheDonDope/wits-server/pkg/handler"
+	"github.com/TheDonDope/wits-server/pkg/storage"
 	"github.com/joho/godotenv"
 	echojwt "github.com/labstack/echo-jwt/v4"
 	"github.com/labstack/echo/v4"
