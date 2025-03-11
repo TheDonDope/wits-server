@@ -1,0 +1,176 @@
+package auth
+
+import "github.com/TheDonDope/wits/pkg/view/layout"
+
+type LoginErrors struct {
+	Email              string
+	Password           string
+	InvalidCredentials string
+}
+
+type RegisterParams struct {
+	Email                string
+	Password             string
+	PasswordConfirmation string
+}
+
+type RegisterErrors struct {
+	Email                string
+	Password             string
+	PasswordConfirmation string
+	InvalidCredentials   string
+}
+
+templ Login() {
+	@layout.App(false) {
+		<div class="flex justify-center mt-[calc(100vh-100vh+8rem)]">
+			<div class="max-w-(--breakpoint-sm) w-full bg-base-300 py-10 px-16 rounded-xl">
+				<img src="public/img/android-chrome-512x512.png" class="mx-auto h-10 w-auto" alt="Wits Logo"/>
+				<h1 class="text-center text-xl font-black mb-10">Log in to Wits</h1>
+				@LoginForm("", "", LoginErrors{})
+				<div class="mt-6 flex items-center justify-end gap-x-6">
+					Not a member?
+					<a class="btn btn-secondary" href="/register">Register here <i class="fa fa-user-plus"></i></a>
+				</div>
+			</div>
+		</div>
+	}
+}
+
+templ LoginForm(email string, password string, errors LoginErrors) {
+	<form
+		hx-post="/login"
+		hx-swap="outerHTML"
+		class="space-y-4"
+	>
+		<div class="w-full">
+			<div class="label">
+				<span class="label-text">Email address</span>
+			</div>
+			<input
+				id="email"
+				class="input input-bordered w-full"
+				name="email"
+				type="email"
+				value={ email }
+				autocomplete="email"
+				required
+			/>
+			@renderErrorLabel(errors.Email)
+		</div>
+		<div class="w-full">
+			<div class="label">
+				<span class="label-text">Password</span>
+			</div>
+			<input
+				id="password"
+				class="input input-bordered w-full"
+				name="password"
+				type="password"
+				autocomplete="current-password"
+				required
+			/>
+			@renderErrorLabel(errors.Password)
+			<a href="/recover-password">Forgot password?</a>
+		</div>
+		@renderErrorText(errors.InvalidCredentials)
+		<button class="btn btn-primary w-full" type="submit">Log in <i class="fa fa-arrow-right"></i></button>
+		<div class="divider">OR</div>
+		<a href="/login/provider/google" class="btn btn-outline w-full" type="submit">Log in with Google <i class="fa fa-google"></i></a>
+	</form>
+}
+
+templ Register() {
+	@layout.App(false) {
+		<div class="flex justify-center mt-[calc(100vh-100vh+8rem)]">
+			<div class="max-w-(--breakpoint-sm) w-full bg-base-300 py-10 px-16 rounded-xl">
+				<img src="public/img/android-chrome-512x512.png" class="mx-auto h-10 w-auto" alt="Wits Logo"/>
+				<h1 class="text-center text-xl font-black mb-10">Register with Wits</h1>
+				@RegisterForm(RegisterParams{}, RegisterErrors{})
+			</div>
+		</div>
+	}
+}
+
+templ RegisterForm(params RegisterParams, errors RegisterErrors) {
+	<form
+		hx-post="/register"
+		hx-swap="outerHTML"
+		class="space-y-4"
+	>
+		<div class="w-full">
+			<div class="label">
+				<span class="label-text">Email address</span>
+			</div>
+			<input
+				id="email"
+				class="input input-bordered w-full"
+				value={ params.Email }
+				name="email"
+				type="email"
+				autocomplete="email"
+				required
+			/>
+			@renderErrorLabel(errors.Email)
+		</div>
+		<div class="w-full">
+			<div class="label">
+				<span class="label-text">Password</span>
+			</div>
+			<input
+				id="password"
+				class="input input-bordered w-full"
+				name="password"
+				type="password"
+				autocomplete="current-password"
+				required
+			/>
+			@renderErrorLabel(errors.Password)
+		</div>
+		<div class="w-full">
+			<div class="label">
+				<span class="label-text">Confirm Password</span>
+			</div>
+			<input
+				id="password-confirmation"
+				class="input input-bordered w-full"
+				name="password-confirmation"
+				type="password"
+				required
+			/>
+			@renderErrorLabel(errors.PasswordConfirmation)
+		</div>
+		@renderErrorText(errors.InvalidCredentials)
+		<button class="btn btn-primary w-full mt-4" type="submit">Register <i class="fa fa-arrow-right"></i></button>
+	</form>
+}
+
+templ RegisterSuccess(email string) {
+	<div>A confirmation email has been sent to: <span class="font-semibold text-success">{ email }</span>. Please check your inbox and click on the link to verify your email address.</div>
+}
+
+templ AuthCallbackScript() {
+	<script>
+		const url = window.location.href;
+		const newURL = url.replace("#", "?");
+		window.location = newURL;
+	</script>
+}
+
+templ renderErrorText(err string) {
+	if len(err) > 0 {
+		<div class="text-sm text-error">
+			{ err }
+		</div>
+	}
+}
+
+templ renderErrorLabel(err string) {
+	if len(err) > 0 {
+		<div class="label">
+			<span class="label-text-alt text-error">
+				{ err }
+			</span>
+		</div>
+	}
+}
