@@ -9,7 +9,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/sessions v1.4.0
 	github.com/joho/godotenv v1.5.1
-	github.com/labstack/echo-jwt/v4 v4.3.1
+	github.com/labstack/echo-jwt/v4 v4.4.0
 	github.com/labstack/echo/v4 v4.14.0
 	github.com/uptrace/bun v1.2.16
 	github.com/uptrace/bun/dialect/pgdialect v1.2.16
